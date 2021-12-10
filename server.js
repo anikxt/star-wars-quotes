@@ -9,10 +9,7 @@ const app = express();
 // Updates environment variables
 require('./dotenv');
 
-const connectionString =
-  'mongodb+srv://anikxt:7038659325@cluster0.jruso.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-
-MongoClient.connect(connectionString, { useUnifiedTopology: true })
+MongoClient.connect(process.env.MONGODB_URL, { useUnifiedTopology: true })
   .then((client) => {
     console.log('Connected to Database');
     const db = client.db('star-wars-quotes');
